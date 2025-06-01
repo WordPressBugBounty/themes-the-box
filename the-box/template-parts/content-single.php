@@ -8,7 +8,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	
+
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		<div class="entry-time">
@@ -25,8 +25,8 @@
 			<?php endif; ?>
 		</div>
 	</header><!-- .entry-header -->
-	
-	<div class="entry-content">
+
+	<div class="entry-content is-layout-constrained has-global-padding">
 		<?php if ( has_post_thumbnail() ) { ?>
     		<?php if  ( get_option( 'thebox_enable_featured_image' ) ) { ?><div class="featured-image"><?php the_post_thumbnail( 'large' ); ?></div><?php } ?>
 		<?php } // has_post_thumbnail ?>
@@ -68,7 +68,7 @@
 			</span>
 			<span class="sep"></span>
 			<?php endif; // End if $tags_list ?>
-			<?php edit_post_link( __( 'Edit', 'the-box' ), '<span class="edit-link">', '</span>' ); ?>		
+			<?php edit_post_link( __( 'Edit', 'the-box' ), '<span class="edit-link">', '</span>' ); ?>
 		</p>
 	</footer><!-- .entry-meta -->
 </article><!-- #post-<?php the_ID(); ?> -->

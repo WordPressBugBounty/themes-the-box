@@ -1,9 +1,9 @@
 /*
 Theme Name: The Box
 Text Domain: the-box
-Version: 1.5.3
+Version: 1.5.4
 Requires at least: 4.5
-Tested up to: 6.4
+Tested up to: 6.8
 Requires PHP: 5.6
 Description: Clean and Simple WordPress Theme designed for blogs and online publications. With easy to use options The Box lets you focus on your awesome writing.
 Author: Design Lab
@@ -11,9 +11,7 @@ Author URI: https://www.designlabthemes.com/
 Theme URI: https://www.designlabthemes.com/the-box-wordpress-theme/
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
 Tags: blog, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, one-column, post-formats, right-sidebar, sticky-post, theme-options, two-columns, translation-ready
-
 */
 
 /********************************************************************************************************
@@ -23,7 +21,6 @@ Tags: blog, custom-background, custom-colors, custom-header, custom-menu, featur
 ********************************************************************************************************/
 
 /*
-
 01: Normalize
 02: Layout
 03: Typography
@@ -38,7 +35,6 @@ Tags: blog, custom-background, custom-colors, custom-header, custom-menu, featur
 12: Blocks
 13: Additional Styles
 14: Responsive
-
 */
 
 
@@ -311,7 +307,7 @@ h1 {
 }
 
 h2 {
-	font-size: 1.571em; /* 22px */
+	font-size: 1.5em; /* 21px */
 	line-height: 1.4;
 	font-weight: 700;
 	margin: 20px 0 10px;
@@ -334,6 +330,12 @@ h5 {
 	font-size: 1em;
 	text-transform: uppercase;
 	font-weight: 400;
+	margin: 10px 0;
+}
+
+h6 {
+	font-size: 0.85em;
+	font-weight: 700;
 	margin: 10px 0;
 }
 
@@ -709,12 +711,6 @@ a:active {
 	outline: 0;
 }
 
-h1 a,
-h2 a,
-h3 a {
-	color: #252525;
-}
-
 .site-title a {
 	display: inline-block;
 	color: #252525;
@@ -723,6 +719,10 @@ h3 a {
 .site-title a:hover {
 	text-decoration: none;
 	color: #0fa5d9;
+}
+
+.entry-title a {
+	color: #252525;
 }
 
 .entry-title a:hover {
@@ -757,25 +757,6 @@ h3 a {
 
 .more-link:hover {
 	text-decoration: underline;
-}
-
-/* Alignments */
-.alignleft {
-	display: inline;
-	float: left;
-	margin: 0 20px 10px 0;
-}
-
-.alignright {
-	display: inline;
-	float: right;
-	margin: 0 0 10px 20px;
-}
-
-.aligncenter {
-	clear: both;
-	display: block;
-	margin: 20px auto;
 }
 
 /* Clearings */
@@ -1033,7 +1014,7 @@ html {
 }
 
 .social-links a span:before {
-	content: none !important;
+	content: none;
 }
 
 .social-links a span {
@@ -2060,7 +2041,8 @@ html {
 }
 
 .widget_text img.aligncenter {
-	margin: 10px auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 /* Calendar Widget */
@@ -2280,118 +2262,7 @@ p.has-drop-cap:not(:focus)::first-letter {
 	box-sizing: border-box;
 }
 
-/* Image */
-.wp-block-image {
-	margin-bottom: 20px;
-}
-
-.wp-block-image img {
-	display: block;
-}
-
-.wp-block-image .alignleft,
-.wp-block-image .alignright {
-	margin: 0 auto 20px;
-}
-
-.wp-block-image .aligncenter {
-	clear: both;
-	margin: 20px auto;
-}
-
-@media screen and (min-width: 480px) {
-	.wp-block-image .alignleft {
-	margin: 0 20px 5px 0;
-	}
-	.wp-block-image .alignright {
-	margin: 0 0 5px 20px;
-	}
-}
-
-/* Cover Image */
-.wp-block-cover-image,
-.wp-block-cover {
-	margin: 20px auto;
-}
-
-.wp-block-cover-image .wp-block-cover__inner-container > *:last-child,
-.wp-block-cover .wp-block-cover__inner-container > *:last-child {
-	margin-bottom: 0;
-}
-
-/* Gallery */
-.wp-block-gallery {
-	margin-left: 0;
-}
-
-/* Buttons */
-.wp-block-button {
-	margin-bottom: 2em;
-}
-
-.wp-block-button__link,
-.wp-block-file .wp-block-file__button {
-	background: #353535;
-	font-weight: 700;
-	line-height: 20px;
-	border-radius: 0;
-}
-
-.wp-block-button__link {
-	padding: 10px 24px;
-	font-size: 1em;
-	opacity: 1;
-	transition: opacity 0.3s ease-in-out 0s;
-}
-
-.wp-block-button__link:hover {
-	text-decoration: none;
-	opacity: 0.75;
-}
-
-.wp-block-file .wp-block-file__button {
-	padding: 8px 16px;
-	font-size: 14px;
-}
-
-.wp-block-button:not(.is-style-outline) .wp-block-button__link:not(.has-text-color) {
-	color: #fff;
-}
-
-.wp-block-button.is-style-outline {
-	color: #353535;
-}
-
-.wp-block-button.is-style-outline .wp-block-button__link {
-	background: none;
-	border-color: currentColor;
-	padding: 8px 22px;
-}
-
-.wp-block-button.is-style-outline .wp-block-button__link:not(.has-text-color) {
-	color: inherit;
-}
-
 /* Separator */
-.wp-block-separator {
-	color: #353535;
-	border: 0;
-}
-
-.wp-block-separator:not(.is-style-wide) {
-	background-color: #353535;
-}
-
-.wp-block-separator:not(.is-style-dots) {
-	height: 2px;
-}
-
-.wp-block-separator:not(.is-style-wide):not(.is-style-dots):not(.alignwide) {
-	max-width: 80px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
 .wp-block-separator.is-style-dots:before {
 	background-color: transparent;
 	font-size: 2em;
@@ -2400,28 +2271,17 @@ p.has-drop-cap:not(:focus)::first-letter {
 }
 
 /* Quote */
-.wp-block-quote.has-text-align-center {
-	border-left: 0;
-	padding: 0 20px;
-}
-
 .wp-block-quote.is-large,
 .wp-block-quote.is-style-large {
-	margin: 30px auto;
-}
-
-/* Media & Text */
-.wp-block-media-text {
-	margin-bottom: 20px;
-}
-
-.wp-block-media-text *:last-child {
-	margin-bottom: 0;
-}
-
-/* Columns */
-.wp-block-columns {
+	margin-top: 30px;
 	margin-bottom: 30px;
+}
+
+/* Pullquote */
+.wp-block-pullquote {
+	margin: 20px 0;
+	padding: 0;
+	border: 0;
 }
 
 /* Audio */
@@ -2447,6 +2307,12 @@ p.has-drop-cap:not(:focus)::first-letter {
 .entry-content .wp-social-link a:visited,
 .entry-content .wp-social-link svg {
 	color: currentColor;
+}
+
+/* Post template */
+.site-fullwidth .wp-block-post-template .wp-block-post {
+	box-shadow: unset;
+	border-radius: unset;
 }
 
 /* Colors & Font sizes */

@@ -7,15 +7,20 @@
  */
 
 
+/**
+* Make theme available for translation.
+*/
+add_action( 'init', function() {
+	load_theme_textdomain( 'the-box', get_template_directory() . '/languages');
+} );
+
+
 if ( ! function_exists( 'thebox_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
  */
 function thebox_setup() {
-
-	// Make theme available for translation. Translations can be filed in the /languages/ directory
-	load_theme_textdomain( 'the-box', get_template_directory() . '/languages' );
 
 	// Set the default content width.
 	$GLOBALS['content_width'] = 600;
@@ -51,37 +56,20 @@ function thebox_setup() {
 		'default-image' => '',
 	) ) );
 
-	// This theme styles the visual editor to resemble the theme style,
-	add_editor_style( array( 'inc/css/editor-style.css', thebox_fonts_url() ) );
+	// Add theme support for selective refresh for widgets.
+	add_theme_support( 'customize-selective-refresh-widgets' );
 
-	// Load regular editor styles into the new block-based editor.
+	// Add support for responsive embeds.
+	add_theme_support( 'responsive-embeds' );
+
+	// Add support for full and wide align images.
+	add_theme_support( 'align-wide' );
+
+	// Add support for editor styles.
 	add_theme_support( 'editor-styles' );
 
-	// Add custom editor font sizes.
-	add_theme_support(
-		'editor-font-sizes', array(
-			array(
-				'name'      => __( 'Small', 'the-box' ),
-				'size'      => 14,
-				'slug'      => 'small',
-			),
-			array(
-				'name'      => __( 'Normal', 'the-box' ),
-				'size'      => 16,
-				'slug'      => 'normal',
-			),
-			array(
-				'name'      => __( 'Large', 'the-box' ),
-				'size'      => 24,
-				'slug'      => 'large',
-			),
-			array(
-				'name'      => __( 'Huge', 'the-box' ),
-				'size'      => 32,
-				'slug'      => 'huge',
-			),
-		)
-	);
+	// This theme styles the visual editor to resemble the theme style,
+	add_editor_style( array( 'inc/css/editor-style.css', thebox_fonts_url() ) );
 
 	// Add support for custom color scheme.
 	add_theme_support(
@@ -694,64 +682,43 @@ require_once( trailingslashit( get_template_directory() ) . '/inc/customize-pro/
 
 
 /**
- * The Box Plus Notice
- *
+ * Add About Page
  */
-if( is_admin() ) {
+require_once get_template_directory() . '/inc/about-page/about-the-box.php';
 
-	if( ! get_option( 'thebox_basic_notice' ) ) {
 
-		add_action('admin_notices', 'thebox_basic_notice');
-		add_action('wp_ajax_thebox_hide_notice', 'thebox_hide_notice');
-
-		function thebox_basic_notice() {
-		?>
-			<div class="basic-notice updated is-dismissible" style="position: relative;padding-right: 40px;">
-				<p>
-				<?php
-					printf(__('<strong>Upgrade to The Box Plus</strong> to get extended functionality and advanced customization options: %1$s', 'the-box'),
-					sprintf('<a class="button button-primary" style="text-decoration:none" href="https://www.designlabthemes.com/the-box-plus-wordpress-theme/?utm_source=notice_button&utm_medium=wordpress_dashboard&utm_campaign=the_box_upsell" target="_blank">%s</a>', '<strong>Try The Box Plus</strong>')
-					);
-				?>
-				</p>
-				<a class="notice-dismiss" style="text-decoration:none;cursor:pointer;" title="<?php _e('Close and don\'t show this message again', 'the-box'); ?>">
-					<span class="screen-reader-text">Dismiss this notice.</span>
-				</a>
-			</div>
-
-		<script type="text/javascript">
-			jQuery(document).ready(function($){
-				$('#wpbody').delegate('.basic-notice a.notice-dismiss', 'click', function(){
-					$.ajax({
-						url: ajaxurl,
-						type: 'GET',
-						context: this,
-						data: ({
-							action: 'thebox_hide_notice',
-							_ajax_nonce: '<?php echo wp_create_nonce('thebox_hide_notice'); ?>'
-						}),
-						success: function(data){
-							$(this).parents('.basic-notice').remove();
-						}
-					});
-				});
-			});
-		</script>
-		<?php
-		}
-
-		function thebox_hide_notice() {
-			check_ajax_referer('thebox_hide_notice');
-			update_option('thebox_basic_notice', true);
-			die();
-		}
-
+/**
+ * Add Upsell notice
+ */
+function the_box_notice() {
+	$user_id = get_current_user_id();
+	if ( ! get_user_meta( $user_id, 'the_box_notice_dismissed' ) ) {
+	?>
+	<div class="updated notice notice-success is-dismissible the-box-admin-notice">
+		<h2 class="welcome-title">
+			<?php esc_html_e( 'Welcome! Thank you for choosing The Box WordPress Theme', 'the-box' ); ?>
+		</h2>
+		<p>
+			<?php echo wp_kses_post( __( '<strong>To fully take advantage</strong> of the best our theme can offer, please visit our', 'the-box' ) ); ?> <a href="<?php echo esc_url( admin_url( 'themes.php?page=about_the_box' ) ); ?>"><strong><?php echo esc_html__( 'Welcome Page', 'the-box' ); ?></strong></a>
+		</p>
+		<p>
+			<a class="button button-primary" href="<?php echo esc_url( 'https://www.designlabthemes.com/the-box-plus-wordpress-theme/?utm_source=WordPress&utm_medium=notice&utm_campaign=the-box_upsell' ); ?>" target="_blank">
+				<?php esc_html_e( 'View The Box Plus', 'the-box' ); ?>
+			</a>
+			<a style="color: #646970;margin-left: 0.5em;" href="<?php echo esc_url( '?the-box-dismissed' ); ?>">
+				<?php esc_html_e( 'Dismiss', 'the-box' ); ?>
+			</a>
+		</p>
+	</div>
+	<?php
 	}
-	// removes the notice status from the db
-	add_action('switch_theme', 'thebox_remove_notice_record');
-
-	function thebox_remove_notice_record() {
-		delete_option( 'thebox_basic_notice' );
-	}
-
 }
+add_action( 'admin_notices', 'the_box_notice' );
+
+function the_box_notice_dismissed() {
+	$user_id = get_current_user_id();
+	if ( isset( $_GET['the-box-dismissed'] ) ) {
+		add_user_meta( $user_id, 'the_box_notice_dismissed', 'true', true );
+	}
+}
+add_action( 'admin_init', 'the_box_notice_dismissed' );

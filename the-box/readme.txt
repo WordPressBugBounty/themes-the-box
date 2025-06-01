@@ -2,7 +2,7 @@
 Contributors: Design Lab Themes
 Tags: blog, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, one-column, post-formats, right-sidebar, sticky-post, theme-options, two-columns, translation-ready
 Requires at least: 4.5
-Tested up to: 6.4
+Tested up to: 6.8
 Stable tag: 1.4.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -31,6 +31,12 @@ Please visit https://wordpress.org/support/theme/the-box if you have any questio
 
 
 == Changelog ==
+
+= 1.5.4 =
+* Update About Page to fix the incorrect call to the _load_textdomain_just_in_time function
+* Update Theme Notice
+* Add theme.json file for better Block Editor support
+* Load Translations at the init action
 
 = 1.5.3 =
 * Update Social icons

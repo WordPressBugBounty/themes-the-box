@@ -11,10 +11,10 @@
 		<header class="entry-header">
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 		</header><!-- .entry-header -->
-	
-		<div class="entry-content">
+
+		<div class="entry-content is-layout-constrained has-global-padding">
 			<?php if ( has_post_thumbnail() ) { ?>
-		    	<?php if  ( get_option( 'thebox_page_featured_image' ) ) { ?><div class="featured-image"><?php the_post_thumbnail( 'large' ); ?></div><?php } ?>
+				<?php if  ( get_option( 'thebox_page_featured_image' ) ) { ?><div class="featured-image"><?php the_post_thumbnail( 'large' ); ?></div><?php } ?>
 			<?php } // has_post_thumbnail ?>
 			<?php
 				the_content();
@@ -28,7 +28,7 @@
 				) );
 			?>
 		</div><!-- .entry-content -->
-		
+
 		<footer class="entry-footer">
 			<p>
 				<?php if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) : ?>

@@ -3,39 +3,15 @@ Theme Name: The Box
 Description: Used to style blocks in the editor.
 */
 
-
 .editor-styles-wrapper {
 	max-width: 100% !important; /* Override where editor-style.css is affecting this */
 }
 
-.wp-block {
-	max-width: 640px;
-}
-
 /* Typography */
-.editor-styles-wrapper > * {
-	font-family: 'Oxygen', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-	font-size: 14px;
-	line-height: 1.75;
-	color: #353535;
-}
-
 .editor-styles-wrapper .editor-post-title__input {
-	font-family: 'Oxygen', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-	color: #252525;
 	font-size: 24px;
 	font-weight: 400;
 	line-height: 1.4;
-}
-
-.editor-styles-wrapper h1,
-.editor-styles-wrapper h2,
-.editor-styles-wrapper h3,
-.editor-styles-wrapper h4,
-.editor-styles-wrapper h5,
-.editor-styles-wrapper h6 {
-	font-family: 'Oxygen', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-	color: #252525;
 }
 
 .editor-styles-wrapper h1 {
@@ -44,7 +20,7 @@ Description: Used to style blocks in the editor.
 }
 
 .editor-styles-wrapper h2 {
-	font-size: 22px;
+	font-size: 21px;
 	line-height: 1.4;
 	font-weight: 700;
 }
@@ -66,6 +42,11 @@ Description: Used to style blocks in the editor.
 	font-weight: 400;
 }
 
+.editor-styles-wrapper h6 {
+	font-size: 12px;
+	font-weight: 700;
+}
+
 .editor-styles-wrapper h1:first-child,
 .editor-styles-wrapper h2:first-child,
 .editor-styles-wrapper h3:first-child,
@@ -78,6 +59,15 @@ Description: Used to style blocks in the editor.
 .editor-styles-wrapper .has-large-font-size,
 .editor-styles-wrapper .has-larger-font-size {
 	line-height: 1.4;
+}
+
+/* List */
+.editor-styles-wrapper ul:not(.wp-block-gallery),
+.block-library-list ul,
+.editor-styles-wrapper ol,
+.block-library-list ol,
+.block-library-list .editor-rich-text__tinymce {
+	padding: 0 0 0 20px;
 }
 
 /* Gallery */
@@ -122,44 +112,6 @@ Description: Used to style blocks in the editor.
 /* Pullquote */
 .wp-block-pullquote {
 	margin: 20px 0;
-	padding: 0 15px;
-	border: 0;
-}
-.editor-styles-wrapper .wp-block-pullquote blockquote,
-.editor-styles-wrapper .wp-block-pullquote blockquote {
-	margin: 0;
 	padding: 0;
 	border: 0;
-}
-
-/* Buttons */
-.editor-styles-wrapper .wp-block-button__link,
-.editor-styles-wrapper .wp-block-file__button {
-	padding: 12px 24px;
-	background: #353535;
-	color: #fff;
-	font-size: 1rem;
-	font-weight: 700;
-	line-height: 20px;
-	border-radius: 0;
-}
-.editor-styles-wrapper .is-style-outline .wp-block-button__link {
-	background: none;
-	color: #353535;
-	border-color: currentColor;
-}
-.editor-styles-wrapper .wp-block-file .wp-block-file__button {
-	padding: 8px 16px;
-	font-size: 14px;
-}
-/* Separator */
-.editor-styles-wrapper .wp-block-separator {
-	border: 0;
-	color: #252525;
-	margin: 20px auto;
-}
-.editor-styles-wrapper .wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
-	background-color: #252525;
-	height: 3px;
-	max-width: 80px;
 }
